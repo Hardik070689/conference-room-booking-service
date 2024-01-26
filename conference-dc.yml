@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+  conference-room:
+    image: conference-room-booking:latest
+    ports:
+      - 8080:8080

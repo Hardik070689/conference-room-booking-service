@@ -61,7 +61,7 @@ public class BookingServiceTest {
     @Order(2)
     public void test_whenBookOutOfMaintainTime_Then_AvailableBookings(){
         LocalTime startTime = LocalTime.NOON.minusMinutes(60);
-        LocalTime endTime = LocalTime.NOON.minusMinutes(75);
+        LocalTime endTime = LocalTime.NOON.minusMinutes(45);
         BookingTimeDto bookingTimeDto = new BookingTimeDto(
                 BookingTestUtils.getTodayLocalDateTime(startTime ),
                 BookingTestUtils.getTodayLocalDateTime(endTime)

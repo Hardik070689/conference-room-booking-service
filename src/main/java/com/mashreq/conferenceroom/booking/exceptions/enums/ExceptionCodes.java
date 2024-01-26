@@ -18,7 +18,11 @@ public enum ExceptionCodes {
     BOOKING_TIME_INTERVAL_CRITERIA_UNMET("BOOKING_EXCEPTION_004" , "Booking time interval (%s) - (%s) does not fall in multiple of (%s) minutes interval",HttpStatus.BAD_REQUEST),
 
     BOOKING_ENDTIME_IS_BEFORE_STARTTIME("BOOKING_EXCEPTION_005" , "Booking End Time : (%s) is before the start time : (%s)" ,HttpStatus.BAD_REQUEST ),
-    BOOKING_START_END_TIME_EQUALS("BOOKING_EXCEPTION_006" , "Booking start time : (%s) and endtime : (%s) should not be equal", HttpStatus.BAD_REQUEST);
+    BOOKING_START_END_TIME_EQUALS("BOOKING_EXCEPTION_006" , "Booking start time : (%s) and endtime : (%s) should not be equal", HttpStatus.BAD_REQUEST),
+
+    ROOM_CONFIGURE_DUPLICATE_EXISTS("BOOKING_EXCEPTION_007" , "Room : (%s) already exists" , HttpStatus.BAD_REQUEST),
+    ROOM_BOOKING_NOT_EXISTS("BOOKING_EXCEPTION_008" , "Room : (%s) does not exists" , HttpStatus.BAD_REQUEST);
+
     private final String errorCode ;
     private final String errorMessage;
     private final HttpStatus httpStatus;

@@ -12,4 +12,7 @@ public interface RoomRepository extends JpaRepository<Room , Long> {
     @Query("select room from Room room order by room.roomCapacity asc")
     List<Room> getRoomsOrderByCapacityAsc();
 
+    @Query("select room from Room room where room.roomName=:name")
+    Room findRoomByName(String name);
+
 }

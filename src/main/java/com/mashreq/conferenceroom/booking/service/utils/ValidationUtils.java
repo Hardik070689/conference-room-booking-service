@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import static com.mashreq.conferenceroom.booking.exceptions.enums.ExceptionCodes.*;
@@ -22,31 +21,31 @@ public class ValidationUtils {
 
     public void validateBookingRequestDto(BookingRequestDto bookingRequestDto){
 
-        LocalTime startTime = bookingRequestDto.startDime().toLocalTime();
+        LocalTime startTime = bookingRequestDto.startTime().toLocalTime();
         LocalTime endTime = bookingRequestDto.endTime().toLocalTime();
 
-        if(afterCurrentDate(bookingRequestDto.startDime().toLocalDate()) ||
+        if(afterCurrentDate(bookingRequestDto.startTime().toLocalDate()) ||
                 afterCurrentDate(bookingRequestDto.endTime().toLocalDate())){
             throw new BookingExceptions(BOOKING_IN_FUTURE_NOT_PERMITTED ,
-                    bookingRequestDto.startDime() ,
+                    bookingRequestDto.startTime() ,
                     bookingRequestDto.endTime() );
         }
 
         if(beforeCurrentTime(startTime) ||
                 beforeCurrentTime(endTime))
             throw new BookingExceptions(BOOKING_TIMES_REQUESTED_IN_PAST ,
-                    bookingRequestDto.startDime() , bookingRequestDto.endTime());
+                    bookingRequestDto.startTime() , bookingRequestDto.endTime());
 
         if(endTime.isBefore(startTime))
             throw new BookingExceptions(BOOKING_ENDTIME_IS_BEFORE_STARTTIME ,
-                    bookingRequestDto.endTime() , bookingRequestDto.startDime());
+                    bookingRequestDto.endTime() , bookingRequestDto.startTime());
 
        Duration timeDifference =  Duration.between(startTime , endTime);
       long timeDiffInMinutes =  timeDifference.toMinutes();
 
       if(timeDiffInMinutes == 0){
           throw  new BookingExceptions(BOOKING_START_END_TIME_EQUALS  ,
-                  bookingRequestDto.startDime() , bookingRequestDto.endTime());
+                  bookingRequestDto.startTime() , bookingRequestDto.endTime());
       }
 
 
@@ -54,7 +53,7 @@ public class ValidationUtils {
 
       if(remainDiff > 0){
           throw new BookingExceptions(BOOKING_TIME_INTERVAL_CRITERIA_UNMET ,
-                  bookingRequestDto.startDime() , bookingRequestDto.endTime() ,
+                  bookingRequestDto.startTime() , bookingRequestDto.endTime() ,
                   bookingInterval);
       }
     }

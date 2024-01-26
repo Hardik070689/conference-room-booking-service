@@ -7,6 +7,7 @@ import com.mashreq.conferenceroom.booking.model.RoomMaintenanceSchedule;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,6 +15,22 @@ import java.util.List;
 
 @Service
 public class BookingServiceHelper {
+
+
+    public boolean isOpenForBooking(Room room , int bookingMinutes){
+        if(!room.isBookingEnabled())
+            return false ;
+        if(bookingMinutes< room.getMinimumBookingTime())
+            return false ;
+        if((bookingMinutes % room.getBookingTimeFactor()) >0)
+            return false;
+        return true ;
+    }
+
+    public Integer getTimeDiffInMinutes(LocalDateTime startDateTime ,
+                                        LocalDateTime endDateTime){
+        return (int)Duration.between(startDateTime , endDateTime).toMinutes();
+    }
 
     public List<Integer> collectDayRoomBookingMinutes(Room room){
         List<Integer> roomBookingMinutes = new ArrayList<>();

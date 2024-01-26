@@ -30,10 +30,14 @@ public class Room {
     @UpdateTimestamp
     @Column(name="updated_on")
     private LocalDateTime updatedOn;
-
     @OneToMany(fetch = FetchType.LAZY,mappedBy="room" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<RoomMaintenanceSchedule> roomMaintenanceSchedules;
-
     @OneToMany(fetch = FetchType.LAZY,mappedBy="room" , cascade = CascadeType.ALL , orphanRemoval = true)
     private List<RoomBookingHistory> roomBookingHistories;
+    @Column(name="booking_time_factor")
+    private Integer bookingTimeFactor;
+    @Column(name="minimum_booking_time")
+    private Integer minimumBookingTime;
+    @Column(name="booking_enabled")
+    private boolean bookingEnabled;
 }

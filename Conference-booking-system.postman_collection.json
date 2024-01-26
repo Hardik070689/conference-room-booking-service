@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "adcc8497-e7fe-46ef-bf1f-4f5b2f0beeb2",
+		"name": "Conference-booking-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Availability Api positive",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking-system/v1/booking/availability",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking-system",
+						"v1",
+						"booking",
+						"availability"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Check Availability Api positive",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/booking-system/v1/booking/availability",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"booking-system",
+								"v1",
+								"booking",
+								"availability"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 18:52:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"roomName\": \"Amaze\",\n        \"availableDate\": \"26/01/2024\",\n        \"personCount\": 3,\n        \"bookingTimes\": null\n    },\n    {\n        \"roomName\": \"Beauty\",\n        \"availableDate\": \"26/01/2024\",\n        \"personCount\": 7,\n        \"bookingTimes\": null\n    },\n    {\n        \"roomName\": \"Inspire\",\n        \"availableDate\": \"26/01/2024\",\n        \"personCount\": 12,\n        \"bookingTimes\": null\n    },\n    {\n        \"roomName\": \"Strive\",\n        \"availableDate\": \"26/01/2024\",\n        \"personCount\": 20,\n        \"bookingTimes\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Book Room Success",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking-system",
+						"v1",
+						"booking",
+						"bookRoom"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book Room Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"booking-system",
+								"v1",
+								"booking",
+								"bookRoom"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 18:55:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"roomName\": \"Amaze\",\n    \"startDateTime\": \"26/01/2024 23:00\",\n    \"endDateTime\": \"26/01/2024 23:15\",\n    \"bookingSuccess\": true,\n    \"alternateAvailabilities\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Book Room Succes - Big Room Same Time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking-system",
+						"v1",
+						"booking",
+						"bookRoom"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book Room Succes - Big Room Same Time",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 23:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"booking-system",
+								"v1",
+								"booking",
+								"bookRoom"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 18:57:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"roomName\": \"Inspire\",\n    \"startDateTime\": \"26/01/2024 23:00\",\n    \"endDateTime\": \"26/01/2024 23:15\",\n    \"bookingSuccess\": true,\n    \"alternateAvailabilities\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Book Room Past - Error ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 22:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking-system",
+						"v1",
+						"booking",
+						"bookRoom"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book Room Past - Error ",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 22:00\",\n  \"endTime\": \"26/01/2024 23:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"booking-system",
+								"v1",
+								"booking",
+								"bookRoom"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 18:58:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": \"BOOKING_EXCEPTION_003\",\n    \"error_description\": \"Requested booking time range : (2024-01-26T22:00) - (2024-01-26T23:15) should be after the current time\"\n}"
+				}
+			]
+		},
+		{
+			"name": " Book Room Future not allowed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 22:00\",\n  \"endTime\": \"27/01/2024 23:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"booking-system",
+						"v1",
+						"booking",
+						"bookRoom"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": " Book Room Future not allowed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"personCapacity\": 2,\n  \"startTime\": \"26/01/2024 22:00\",\n  \"endTime\": \"27/01/2024 23:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/booking-system/v1/booking/bookRoom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"booking-system",
+								"v1",
+								"booking",
+								"bookRoom"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 18:59:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": \"BOOKING_EXCEPTION_007\",\n    \"error_description\": \"Booking request start date :(2024-01-26T22:00) or end date:(2024-01-27T23:15) is in future\"\n}"
+				}
+			]
+		}
+	]
+}

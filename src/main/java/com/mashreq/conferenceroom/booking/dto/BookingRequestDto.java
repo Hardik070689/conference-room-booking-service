@@ -12,12 +12,12 @@ public record BookingRequestDto(@JsonAlias({"person_capacity"})
                                 Integer personCapacity ,
                                 @JsonAlias({"start_time"})
                                 @NotNull
-                                @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss" , shape = JsonFormat.Shape.STRING)
+                                @JsonFormat(pattern = "dd/MM/yyyy HH:mm" , shape = JsonFormat.Shape.STRING)
                                 @Pattern(regexp = "^(?:[01]\\d|2[0-3]):[0-5]\\d$", message = "Invalid start time format. Please use 24-hour format.")
-                                LocalDateTime startDime ,
+                                LocalDateTime startTime,
                                 @JsonAlias({"end_time"})
                                 @NotNull
-                                @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss" , shape = JsonFormat.Shape.STRING)
+                                @JsonFormat(pattern = "dd/MM/yyyy HH:mm" , shape = JsonFormat.Shape.STRING)
                                 @Pattern(regexp = "^(?:[01]\\d|2[0-3]):[0-5]\\d$", message = "Invalid end time format. Please use 24-hour format.")
                                 LocalDateTime endTime) {
 }

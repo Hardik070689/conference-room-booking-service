@@ -10,6 +10,7 @@
 3. [Usage](#usage)
 4. [Configuration](#configuration)
 5. [Contributing](#contributing)
+6. [Features](#features-)
 
 
 
@@ -56,13 +57,13 @@ Instructions on how to install and set up the project. Include any prerequisites
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/Hardik070689/conference-room-booking-service.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd your-project
+   cd conference-room-booking-service
    ```
 
 3. Build the project:
@@ -124,6 +125,14 @@ Please submit any feature requests by opening an issue on the GitHub repository.
 3. Make your changes and commit them: `git commit -am 'Add new feature'`
 4. Push to the branch: `git push origin feature-branch`
 5. Submit a pull request.
+
+## features 
+
+Features that are extra added to project
+- [x] Capability to Configure New Room
+- [x] Capabiltity to Update minimum booking time required, booking enabled for room
+- [ ] Add Maintenance time to Room 
+- [ ] Delete Maintenance time to Room
 
 
 ---
