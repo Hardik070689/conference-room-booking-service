@@ -1,0 +1,67 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /booking-system
+    session:
+      persistent: true
+logging:
+  level:
+    root: ERROR
+    org.springframework: ERROR
+    org.springframework.ws.client.MessageTracing.sent: ERROR
+    org.springframework.ws.client.MessageTracing.received: ERROR
+    com.mashreq: DEBUG
+
+springdoc:
+  paths-to-match: /v1/**
+  show-actuator: true
+  swagger-ui:
+    enabled: true
+    disable-swagger-default-url: true
+    config-url: /booking-system/v3/api-docs/swagger-config
+    url: /booking-system/v3/api-docs
+
+spring:
+  application:
+    name: conference-room-booking-system
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase-changeLog-test.xml
+    default-schema:
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        format_sql: false
+        enable_lazy_load_no_trans: true
+        allow_update_outside_transaction: true
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driverClassName: org.h2.Driver
+    # url: ${DB_URL:jdbc:sqlserver://mssql-server:1433;databaseName=BBO_SERVICE_WORKFLOW;encrypt=true;trustServerCertificate=true}
+    url: jdbc:h2:mem:testdb;MODE=MSSQLServer
+    username: sa
+    password: SMEOnboarding@123
+    hikari:
+      poolName: hikari-booking-system-pool
+      maxPoolSize: 30
+      minConnections: 10
+httppool:
+  maxPerRoute: 20
+  maxTotal: 20
+  connectionRequestTimeout: 20000
+  connectTimeout: 20000
+  socketTimeout: 20000
+management:
+  health:
+    ldap:
+      enabled: false
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health
